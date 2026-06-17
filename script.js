@@ -69,7 +69,7 @@ for (let y = 0; y < SIZE; y++) {
                 pixel.style.backgroundColor =
                     selectedColor;
 
-                await fetch("/pixels", {
+                await fetch("/pixel", {
 
                     method: "POST",
 
