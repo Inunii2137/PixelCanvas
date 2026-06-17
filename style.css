@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: #e7c386;
+    background: #e7e7e7;
     font-family: Arial, sans-serif;
 }
 
@@ -19,7 +19,7 @@ body {
 /* CANVAS FRAME */
 
 .canvas-wrapper {
-    background: #d4a24c;
+    background: 7#595959;
 
     padding: 20px;
 
@@ -144,7 +144,25 @@ body {
     box-shadow:
         0 4px 12px rgba(0,0,0,0.15);
 }
+.qr-box {
 
+    background: black;
+
+    padding: 10px;
+
+    border-radius: 10px;
+}
+
+.qr-box img {
+
+    width: 150px;
+
+    height: 150px;
+
+    display: block;
+
+    background: white;
+}
 
 
 /* MOBILE */
