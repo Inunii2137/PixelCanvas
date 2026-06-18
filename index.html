@@ -85,12 +85,43 @@
         </div>
 
     </div>
+    <script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getFirestore
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA_mi1rsHXclnu4D3Zckog7HCun_Ly7hQU",
+  authDomain: "pixelcanvas-76284.firebaseapp.com",
+  databaseURL: "https://pixelcanvas-76284-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "pixelcanvas-76284",
+    storageBucket: "pixelcanvas-76284.appspot.com",
+  messagingSenderId: "605389888693",
+  appId: "1:605389888693:web:d18f4a350adf1e9c3df2fc"
+};
+
+const app = initializeApp(firebaseConfig);
+
+window.db = getFirestore(app);
+
+</script>
+
+<script type="module" src="script.js"></script>
 
     <!-- CONNECT JAVASCRIPT -->
 
     <script src="script.js"></script>
 
 </body>
+
+</html>
+
+    
 
 </html>
 
