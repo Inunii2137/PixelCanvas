@@ -1,3 +1,11 @@
+import {
+  collection,
+  doc,
+  setDoc,
+  getDocs
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
 const canvas = document.getElementById("canvas");
 
 const colors = document.querySelectorAll(".color");
@@ -69,21 +77,14 @@ for (let y = 0; y < SIZE; y++) {
                 pixel.style.backgroundColor =
                     selectedColor;
 
-                await fetch("/pixel", {
-
-                    method: "POST",
-
-                    headers: {
-                        "Content-Type":
-                            "application/json"
-                    },
-
-                    body: JSON.stringify({
-                        x,
-                        y,
-                        color: selectedColor
-                    })
-                });
+              await setDoc(
+    doc(window.db, "pixels", `${x}_${y}`),
+    {
+        x,
+        y,
+        color: selectedColor
+    }
+);
 
                 localStorage.setItem(
                     "lastPlaced",
@@ -104,38 +105,27 @@ for (let y = 0; y < SIZE; y++) {
 
 async function loadPixels() {
 
-    try {
+  const querySnapshot =
+    await getDocs(
+      collection(window.db, "pixels")
+    );
 
-        const response =
-            await fetch("/pixels");
+  querySnapshot.forEach((docData) => {
 
-        const data =
-            await response.json();
+    const p = docData.data();
 
-        data.pixels.forEach(p => {
+    const pixel = document.querySelector(
+      `.pixel[data-x='${p.x}'][data-y='${p.y}']`
+    );
 
-            const selector =
-                `.pixel[data-x='${p.x}'][data-y='${p.y}']`;
-
-            const pixel =
-                document.querySelector(selector);
-
-            if (pixel) {
-
-                pixel.style.backgroundColor =
-                    p.color;
-            }
-        });
-
-    } catch (error) {
-
-        console.error(error);
+    if (pixel) {
+      pixel.style.backgroundColor =
+        p.color;
     }
+
+  });
+
 }
-
-loadPixels();
-
-setInterval(loadPixels, 5000);
 
 /* -----------------------------
    TIMER
