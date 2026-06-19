@@ -125,7 +125,8 @@ async function loadPixels() {
 
   });
 
-}
+}loadPixels();
+setInterval(loadPixels, 1000);
 
 /* -----------------------------
    TIMER
@@ -173,29 +174,7 @@ setInterval(updateTimer, 1000);
 
 updateTimer();
 
-/* -----------------------------
-   RESET BUTTON
------------------------------ */
 
-const resetBtn =
-    document.getElementById("resetBtn");
-
-if (resetBtn) {
-
-    resetBtn.addEventListener(
-        "click",
-        async () => {
-
-            await fetch("/reset", {
-                method: "DELETE"
-            });
-
-            localStorage.clear();
-
-            location.reload();
-        }
-    );
-}
 // -----------------------------
 // ZOOM + PAN
 // -----------------------------
@@ -260,3 +239,4 @@ function updateTransform() {
     canvasWrapper.style.transform =
         `translate(${posX}px, ${posY}px) scale(${scale})`;
 }
+
