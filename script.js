@@ -126,7 +126,7 @@ async function loadPixels() {
   });
 
 }loadPixels();
-setInterval(loadPixels, 1000);
+setInterval(loadPixels, 30000);
 
 /* -----------------------------
    TIMER
@@ -239,4 +239,3 @@ function updateTransform() {
     canvasWrapper.style.transform =
         `translate(${posX}px, ${posY}px) scale(${scale})`;
 }
-
